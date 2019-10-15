@@ -1,24 +1,7 @@
-# README
+#Readme
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Application Name: RubyZoo
 
-Things you may want to cover:
+Description: An animal review site that allows users to add their favorite zoo animals and review/vote on those animals.
 
-* Ruby version 2.6.5
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Authors: Danny Nguyen, Priti Patil, Shani Fox, and Casey Whittaker
