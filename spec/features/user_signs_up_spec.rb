@@ -16,6 +16,7 @@ feature 'user registers', %Q{
     visit new_user_registration_path
 
     fill_in 'Email', with: 'john@example.com'
+    fill_in 'Username', with: 'john'
     fill_in 'Password', with: 'password'
     fill_in 'Password confirmation', with: 'password'
 
@@ -29,6 +30,9 @@ feature 'user registers', %Q{
     visit new_user_registration_path
 
     click_button 'Sign up'
+    expect(page).to have_content("Username")
+    expect(page).to have_content("Email")
+    expect(page).to have_content("Password")
     expect(page).to have_content("can't be blank")
     expect(page).to_not have_content('Sign Out')
   end
