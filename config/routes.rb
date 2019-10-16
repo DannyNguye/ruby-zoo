@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  root 'animals#index'
+  root 'static_pages#index'
   devise_for :users
 
-  resources :animals, only: [:index]
+  get '/animals', to: "static_pages#index"
+
+  namespace :api do
+    namespace :v1 do
+      resources :animals, only: :index
+    end
+  end
 end
