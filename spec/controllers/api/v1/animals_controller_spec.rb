@@ -59,7 +59,9 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
       expect(returned_json["habitat"]).to eq "Desert"
       expect(returned_json["diet"]).to eq "Carnivore"
       expect(returned_json["description"]).to eq "He's like Wiley, but he can't talk"
-
+    end
+  end
+  
   describe "POST#create" do
     it "creates a new animal" do
       post_json = {
