@@ -21,10 +21,13 @@ describe("AnimalTile", () => {
       </BrowserRouter>
     )
   })
-  it("renders a p tag", () => {
-    expect(wrapper.find("p").exists()).toBe(true)
+
+  it("renders an h3 tag with the animal name", () => {
+    expect(wrapper.find("h3").text()).toBe("Ryan")
   })
-  it("renders a p tag with the animal name", () => {
-    expect(wrapper.find("p").text()).toBe("Ryan")
+
+  it("renders a p tag with the animal species", () => {
+    expect(wrapper.find("p").text()).toBe("Dragon")
   })
+
 })
