@@ -4,9 +4,7 @@ import Adapter from "enzyme-adapter-react-16"
 import { BrowserRouter } from 'react-router-dom'
 Enzyme.configure({ adapter: new Adapter() })
 
-import AnimalTile from "./animals/AnimalTile"
-
-Enzyme.configure({ adapter: new Adapter() })
+import AnimalIndexTile from "./animals/AnimalIndexTile"
 
 describe("AnimalTile", () => {
   let wrapper
@@ -14,17 +12,20 @@ describe("AnimalTile", () => {
   beforeEach(() => {
     wrapper = mount(
       <BrowserRouter>
-        <AnimalTile
+        <AnimalIndexTile
           name="Ryan"
           species="Dragon"
         />
       </BrowserRouter>
     )
   })
-  it("renders a p tag", () => {
-    expect(wrapper.find("p").exists()).toBe(true)
+
+  it("renders an h3 tag with the animal name", () => {
+    expect(wrapper.find("h3").text()).toBe("Ryan")
   })
-  it("renders a p tag with the animal name", () => {
-    expect(wrapper.find("p").text()).toBe("Ryan")
+
+  it("renders a p tag with the animal species", () => {
+    expect(wrapper.find("p").text()).toBe("Dragon")
   })
+
 })

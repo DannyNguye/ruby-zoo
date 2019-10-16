@@ -43,6 +43,23 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
     end
   end
 
+  describe "GET/show" do
+    it "should return an individual animal" do
+      get :show, params: {id: animal1.id}
+      returned_json = JSON.parse(response.body)
+
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq("application/json")
+
+      expect(returned_json.length).to eq 9
+
+      expect(returned_json["name"]).to eq "Shannon"
+      expect(returned_json["species"]).to eq "Chicken"
+      expect(returned_json["sex"]).to eq "F"
+      expect(returned_json["habitat"]).to eq "Desert"
+      expect(returned_json["diet"]).to eq "Carnivore"
+      expect(returned_json["description"]).to eq "He's like Wiley, but he can't talk"
+
   describe "POST#create" do
     it "creates a new animal" do
       post_json = {
