@@ -4,7 +4,7 @@ import Adapter from "enzyme-adapter-react-16"
 import { BrowserRouter } from 'react-router-dom'
 Enzyme.configure({ adapter: new Adapter() })
 
-import AnimalTile from "./index/AnimalTile"
+import AnimalTile from "./animals/AnimalTile"
 
 Enzyme.configure({ adapter: new Adapter() })
 
