@@ -23,7 +23,7 @@ feature 'user registers', %Q{
     click_button 'Sign up'
 
     expect(page).to have_content('Welcome! You have signed up successfully.')
-    expect(page).to have_content('Sign Out')
+    expect(page).to have_css("input")
   end
 
   scenario 'provide invalid registration information' do
