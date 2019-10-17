@@ -78,30 +78,34 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
   describe "POST#create" do
     it "creates a new animal" do
       post_json = {
-        name: "Charlie",
-        species: "Lizard",
-        sex: "F",
-        habitat: "Wilderness",
-        diet: "Bugs",
-        description: "Loves to eat bugs everyday",
-      }.to_json
+        animal: {
+          name: "Charlie",
+          species: "Lizard",
+          sex: "F",
+          habitat: "Wilderness",
+          diet: "Bugs",
+          description: "Loves to eat bugs everyday"
+        }
+      }
 
       prev_count = Animal.count
-      post(:create, body: post_json)
+      post :create, params: post_json, format: :json
       expect(Animal.count).to eq(prev_count + 1)
     end
 
     it "returns the json of the newly posted animal" do
       post_json = {
-        name: "Charlie",
-        species: "Lizard",
-        sex: "F",
-        habitat: "Wilderness",
-        diet: "Bugs",
-        description: "Loves to eat bugs everyday",
-      }.to_json
+        animal: {
+          name: "Charlie",
+          species: "Lizard",
+          sex: "F",
+          habitat: "Wilderness",
+          diet: "Bugs",
+          description: "Loves to eat bugs everyday"
+        }
+      }
 
-      post(:create, body: post_json)
+      post :create, params: post_json, format: :json
       returned_json = JSON.parse(response.body)
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
