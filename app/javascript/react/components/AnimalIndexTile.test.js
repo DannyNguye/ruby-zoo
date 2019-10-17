@@ -4,9 +4,7 @@ import Adapter from "enzyme-adapter-react-16"
 import { BrowserRouter } from 'react-router-dom'
 Enzyme.configure({ adapter: new Adapter() })
 
-import AnimalTile from "./index/AnimalTile"
-
-Enzyme.configure({ adapter: new Adapter() })
+import AnimalIndexTile from "./animals/AnimalIndexTile"
 
 describe("AnimalTile", () => {
   let wrapper
@@ -14,7 +12,7 @@ describe("AnimalTile", () => {
   beforeEach(() => {
     wrapper = mount(
       <BrowserRouter>
-        <AnimalTile
+        <AnimalIndexTile
           name="Ryan"
           species="Dragon"
         />
