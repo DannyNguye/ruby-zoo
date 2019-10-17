@@ -61,4 +61,50 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
       expect(returned_json["description"]).to eq "He's like Wiley, but he can't talk"
     end
   end
+
+  describe "POST#create" do
+    it "creates a new animal" do
+      post_json = {
+        animal: {
+          name: "Charlie",
+          species: "Lizard",
+          sex: "F",
+          habitat: "Wilderness",
+          diet: "Bugs",
+          description: "Loves to eat bugs everyday"
+        }
+      }
+
+      prev_count = Animal.count
+      post :create, params: post_json, format: :json
+      expect(Animal.count).to eq(prev_count + 1)
+    end
+
+    it "returns the json of the newly posted animal" do
+      post_json = {
+        animal: {
+          name: "Charlie",
+          species: "Lizard",
+          sex: "F",
+          habitat: "Wilderness",
+          diet: "Bugs",
+          description: "Loves to eat bugs everyday"
+        }
+      }
+
+      post :create, params: post_json, format: :json
+      returned_json = JSON.parse(response.body)
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq("application/json")
+
+      expect(returned_json).to be_kind_of(Hash)
+      expect(returned_json).to_not be_kind_of(Array)
+      expect(returned_json["name"]).to eq "Charlie"
+      expect(returned_json["species"]).to eq "Lizard"
+      expect(returned_json["sex"]).to eq "F"
+      expect(returned_json["habitat"]).to eq "Wilderness"
+      expect(returned_json["diet"]).to eq "Bugs"
+      expect(returned_json["description"]).to eq "Loves to eat bugs everyday"
+    end
+  end
 end
