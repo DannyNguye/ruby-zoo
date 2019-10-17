@@ -1,8 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 const AnimalShowPage = props => {
-
   return (
     <div>
       <h2>{props.name}</h2>
@@ -13,8 +11,6 @@ const AnimalShowPage = props => {
         <li>Diet: {props.diet}</li>
         <li>Description: {props.description}</li>
       </ul>
-
-    <Link to="/">Home</Link>
     </div>
   )
 }
