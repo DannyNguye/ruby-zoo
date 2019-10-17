@@ -91,6 +91,7 @@ const AnimalForm = props => {
 
   return(
     <div>
+      <h2>Add a New Animal</h2>
       <form onSubmit={handleSubmitHandler}>
         <ErrorList
           errors={errors}

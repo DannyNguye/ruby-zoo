@@ -63,6 +63,23 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
   end
 
   describe "POST#create" do
+    it "returns a 401 authentication error when not logged in" do
+      post_json = {
+        animal: {
+          name: "Charlie",
+          species: "Lizard",
+          sex: "F",
+          habitat: "Wilderness",
+          diet: "Bugs",
+          description: "Loves to eat bugs everyday"
+        }
+      }
+
+      post :create, params: post_json, format: :json
+      returned_json = JSON.parse(response.body)
+      expect(response.status).to eq 401
+    end
+
     it "creates a new animal" do
       user = FactoryBot.create(:user)
       @request.env['devise.mapping'] = Devise.mappings[:user]
@@ -79,7 +96,7 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
       }
 
       prev_count = Animal.count
-      post :create, :params => post_json, format: :json
+      post :create, params: post_json, format: :json
       expect(Animal.count).to eq(prev_count + 1)
     end
 
