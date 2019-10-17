@@ -1,5 +1,4 @@
 import React from 'react'
-
 import ReviewTile from './ReviewTile'
 
 const AnimalReviewContainer = props => {

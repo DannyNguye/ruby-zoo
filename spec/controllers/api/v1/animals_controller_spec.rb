@@ -25,7 +25,7 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
   let!(:review1) { Review.create(
     title: "cute elephant",
     rating: "1",
-    review_body: "He is really cute",
+    body: "He is really cute",
     user: user1,
     animal: animal1
   ) }
@@ -56,22 +56,28 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
   end
 
   describe "GET/show" do
-    it "should return an individual animal and its associated reviews" do
+    it "should return an individual animal" do
       get :show, params: {id: animal1.id}
       returned_json = JSON.parse(response.body)
 
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
-
       expect(returned_json.length).to eq 2
-
       expect(returned_json["animal"]["name"]).to eq "Shannon"
       expect(returned_json["animal"]["species"]).to eq "Chicken"
       expect(returned_json["animal"]["sex"]).to eq "F"
       expect(returned_json["animal"]["habitat"]).to eq "Desert"
       expect(returned_json["animal"]["diet"]).to eq "Carnivore"
       expect(returned_json["animal"]["description"]).to eq "He's like Wiley, but he can't talk"
+    end
+
+    it "should show reviews for the selected animal " do
+      get :show, params: {id: animal1.id}
+      returned_json = JSON.parse(response.body)
+
       expect(returned_json["reviews"][0]["title"]).to eq "cute elephant"
+      expect(returned_json["reviews"][0]["rating"]).to eq 1
+      expect(returned_json["reviews"][0]["body"]).to eq "He is really cute"
     end
   end
 
