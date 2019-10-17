@@ -12,7 +12,7 @@ const AnimalShowContainer = props => {
     diet: "",
     description: ""
   })
-  const [reviews,setReviews] = useState([])
+  const [reviews, setReviews] = useState([])
 
   let animalId = props.match.params.id
   useEffect(() => {
@@ -28,8 +28,8 @@ const AnimalShowContainer = props => {
     })
     .then(response => response.json())
     .then(body => {
-      setAnimal(body["animal"])
-      setReviews(body["reviews"])
+      setAnimal(body.animal)
+      setReviews(body.animal.reviews)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])

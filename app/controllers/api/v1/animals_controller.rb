@@ -6,11 +6,7 @@ class Api::V1::AnimalsController < ApiController
   end
 
   def show
-    animal = Animal.find(params[:id])
-    render json: {
-      animal: animal,
-      reviews: animal.reviews
-    }
+    render json: Animal.find(params[:id]), { serializer: AnimalShowSerializer, logged_in: user_signed_in? }
   end
 
   def create
