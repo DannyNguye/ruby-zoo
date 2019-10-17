@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import AnimalShowPage from './AnimalShowPage'
+import AnimalReviewContainer from './AnimalReviewContainer'
 
 const AnimalShowContainer = props => {
   const [animal, setAnimal] = useState({
@@ -10,6 +11,7 @@ const AnimalShowContainer = props => {
     diet: "",
     description: ""
   })
+  const [reviews,setReviews] = useState([])
 
   let animalId = props.match.params.id
   useEffect(() => {
@@ -25,21 +27,32 @@ const AnimalShowContainer = props => {
     })
     .then(response => response.json())
     .then(body => {
-      setAnimal(body)
+      setAnimal(body["animal"])
+      setReviews(body["reviews"])
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
 
   return (
-    <AnimalShowPage
-      id={animal.id}
-      name={animal.name}
-      species={animal.species}
-      sex={animal.sex}
-      habitat={animal.habitat}
-      diet={animal.diet}
-      description={animal.description}
-    />
+    <div>
+      <div>
+        <AnimalShowPage
+          id={animal.id}
+          name={animal.name}
+          species={animal.species}
+          sex={animal.sex}
+          habitat={animal.habitat}
+          diet={animal.diet}
+          description={animal.description}
+        />
+      </div>
+      <div>
+        <AnimalReviewContainer
+          reviews={reviews}
+        />
+      </div>
+      <Link to="/">Home</Link>
+    </div>
   )
 }
 

@@ -3,4 +3,6 @@ class Animal < ApplicationRecord
   validates :species, presence: true
   validates :sex, presence: true
   validates :habitat, presence: true
+
+  has_many :reviews
 end
