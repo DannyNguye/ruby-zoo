@@ -1,4 +1,10 @@
 class StaticPagesController < ApplicationController
-  def index  
+  before_action :authenticate_user!, except: [:index]
+
+  def index
+  end
+
+  def new
+    render :'/static_pages/index'
   end
 end

@@ -1,4 +1,6 @@
 class Api::V1::AnimalsController < ApiController
+  before_action :authenticate_user!, except: [:show, :index]
+
   def index
     render json: Animal.all
   end
