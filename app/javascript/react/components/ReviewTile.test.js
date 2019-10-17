@@ -17,13 +17,13 @@ describe("ReviewTile", () => {
           id="1"
           title="cute elephant"
           rating="5"
-          review_body="Cute elephant"
+          body="Cute elephant"
         />
       </BrowserRouter>
     )
   })
 
-  it("renders an p tag with the reviews", () => {
+  it("renders an h4 tag with the reviews", () => {
     expect(wrapper.find("h4").text()).toBe("Title: cute elephant")
   })
 

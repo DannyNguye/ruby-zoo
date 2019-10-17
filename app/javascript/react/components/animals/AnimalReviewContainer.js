@@ -1,5 +1,4 @@
 import React from 'react'
-
 import ReviewTile from './ReviewTile'
 
 const AnimalReviewContainer = props => {
@@ -10,7 +9,7 @@ const AnimalReviewContainer = props => {
         id={review.id}
         title={review.title}
         rating={review.rating}
-        reviewBody={review.review_body}
+        body={review.body}
       />
     )
   })
