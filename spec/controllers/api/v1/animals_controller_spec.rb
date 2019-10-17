@@ -76,7 +76,7 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
       }
 
       prev_count = Animal.count
-      post :create, :params => post_json, format: :json
+      post :create, params: post_json, format: :json
       expect(Animal.count).to eq(prev_count + 1)
     end
 
@@ -92,7 +92,7 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
         }
       }
 
-      post :create, :params => post_json, format: :json
+      post :create, params: post_json, format: :json
       returned_json = JSON.parse(response.body)
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
