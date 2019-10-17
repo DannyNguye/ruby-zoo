@@ -4,7 +4,11 @@ class Api::V1::AnimalsController < ApiController
   end
 
   def show
-    render json: Animal.find(params[:id])
+    animal = Animal.find(params[:id])
+    render json: {
+      animal: animal,
+      reviews: animal.reviews
+    }
   end
 
   def create

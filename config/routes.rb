@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get '/animals', to: "static_pages#index"
   get '/animals/new', to: "static_pages#index"
+  get '/animals/:id', to: "static_pages#index"
+
 
   namespace :api do
     namespace :v1 do
