@@ -33,7 +33,7 @@ const AnimalsIndexContainer = props => {
     )
   })
   return(
-    <div>
+    <div className="row">
       {animalTiles}
     </div>
   )

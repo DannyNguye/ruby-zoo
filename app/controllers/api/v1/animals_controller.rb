@@ -1,10 +1,16 @@
 class Api::V1::AnimalsController < ApiController
+  before_action :authenticate_user!, except: [:show, :index]
+
   def index
     render json: Animal.all
   end
 
   def show
-    render json: Animal.find(params[:id])
+    animal = Animal.find(params[:id])
+    render json: {
+      animal: animal,
+      reviews: animal.reviews
+    }
   end
 
   def create
@@ -23,6 +29,6 @@ class Api::V1::AnimalsController < ApiController
   private
 
   def animal_params
-    JSON.parse(request.body.read)
+    params.require(:animal).permit(:name, :species, :sex, :habitat, :diet, :description)
   end
 end

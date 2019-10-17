@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import { Redirect } from "react-router-dom"
 import _ from "lodash"
-
 import ErrorList from "../ErrorList"
 
 const AnimalForm = props => {
@@ -91,6 +90,7 @@ const AnimalForm = props => {
 
   return(
     <div>
+      <h2>Add a New Animal</h2>
       <form onSubmit={handleSubmitHandler}>
         <ErrorList
           errors={errors}
@@ -128,28 +128,28 @@ const AnimalForm = props => {
 
         <label htmlFor="habitat">Habitat:
           <input
-          type="text"
-          id="habitat"
-          value={animalFields.habitat}
-          onChange={handleInputChange}
+            type="text"
+            id="habitat"
+            value={animalFields.habitat}
+            onChange={handleInputChange}
           />
         </label>
 
         <label htmlFor="diet">Diet:
           <input
-          type="text"
-          id="diet"
-          value={animalFields.diet}
-          onChange={handleInputChange}
+            type="text"
+            id="diet"
+            value={animalFields.diet}
+            onChange={handleInputChange}
           />
         </label>
 
         <label htmlFor="description">Description:
           <input
-          type="text"
-          id="description"
-          value={animalFields.description}
-          onChange={handleInputChange}
+            type="text"
+            id="description"
+            value={animalFields.description}
+            onChange={handleInputChange}
           />
         </label>
 

@@ -20,12 +20,16 @@ describe("AnimalTile", () => {
     )
   })
 
-  it("renders an h3 tag with the animal name", () => {
-    expect(wrapper.find("h3").text()).toBe("Ryan")
+  it("renders an h4 tag with the animal name", () => {
+    expect(wrapper.find("h4").text()).toBe("Ryan")
   })
 
-  it("renders a p tag with the animal species", () => {
-    expect(wrapper.find("p").text()).toBe("Dragon")
+  it("renders a h5 tag with the animal species", () => {
+    expect(wrapper.find("h5").text()).toBe("Dragon")
+  })
+
+  it("renders a button-link that will lead to an animal show page", () => {
+    expect(wrapper.find("a").text()).toBe("View Details")
   })
 
 })
