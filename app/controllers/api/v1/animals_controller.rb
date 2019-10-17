@@ -23,6 +23,6 @@ class Api::V1::AnimalsController < ApiController
   private
 
   def animal_params
-    JSON.parse(request.body.read)
+    params.require(:animal).permit(:name, :species, :sex, :habitat, :diet, :description)
   end
 end
