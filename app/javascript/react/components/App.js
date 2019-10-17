@@ -5,7 +5,6 @@ import AnimalForm from "./animals/AnimalForm"
 import AnimalShowContainer from "./animals/AnimalShowContainer"
 
 export const App = (props) => {
-
   return (
     <BrowserRouter>
       <Switch>

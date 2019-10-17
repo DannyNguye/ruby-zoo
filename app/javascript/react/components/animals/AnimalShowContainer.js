@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import AnimalShowPage from './AnimalShowPage'
 import AnimalReviewContainer from './AnimalReviewContainer'
+import ReviewForm from './ReviewForm'
 
 const AnimalShowContainer = props => {
   const [animal, setAnimal] = useState({
@@ -14,6 +16,7 @@ const AnimalShowContainer = props => {
   const [reviews,setReviews] = useState([])
 
   let animalId = props.match.params.id
+
   useEffect(() => {
     fetch(`/api/v1/animals/${animalId}`)
     .then(response => {
@@ -49,6 +52,11 @@ const AnimalShowContainer = props => {
       <div>
         <AnimalReviewContainer
           reviews={reviews}
+        />
+      </div>
+      <div>
+        <ReviewForm
+          animalId={animalId}
         />
       </div>
       <Link to="/">Home</Link>

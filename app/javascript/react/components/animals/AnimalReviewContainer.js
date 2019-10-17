@@ -10,7 +10,7 @@ const AnimalReviewContainer = props => {
         id={review.id}
         title={review.title}
         rating={review.rating}
-        review_body={review.review_body}
+        body={review.body}
       />
     )
   })
