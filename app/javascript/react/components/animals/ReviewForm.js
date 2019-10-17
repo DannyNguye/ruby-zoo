@@ -25,7 +25,7 @@ const ReviewForm = props => {
     const requiredFields = ["rating", "title", "body"]
 
     requiredFields.forEach(field => {
-      if(reviewFields[field].trim() === "") {
+      if(reviewFields[field] === "") {
         submitErrors = {
           ...submitErrors,
           [field]: "can't be blank"
@@ -61,7 +61,7 @@ const ReviewForm = props => {
     .then(response => response.json())
     .then(body => {
       if (body.id) {
-        setReviewFields(body.fields)
+        props.addReview()
       } else {
         setErrors(body.errors)
         setReviewFields(body.fields)
@@ -69,11 +69,11 @@ const ReviewForm = props => {
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
 
-      setReviewFields({
-        rating: "",
-        title: "",
-        body: ""
-      })
+    setReviewFields({
+      rating: "",
+      title: "",
+      body: ""
+    })
     }
   }
 
@@ -88,7 +88,7 @@ const ReviewForm = props => {
           <input
             type="text"
             id="title"
-            value={reviewFields.name}
+            value={reviewFields.title}
             onChange={handleInputChange}
           />
         </label>

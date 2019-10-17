@@ -18,13 +18,17 @@ const AnimalShowContainer = props => {
   let animalId = props.match.params.id
 
   useEffect(() => {
+    addReview()
+  }, [])
+
+  const addReview = () => {
     fetch(`/api/v1/animals/${animalId}`)
     .then(response => {
       if (response.ok) {
         return response;
       } else {
         let errorMessage = `${response.status} (${response.statusText})`,
-            error = new Error(errorMessage);
+        error = new Error(errorMessage);
         throw(error);
       }
     })
@@ -34,7 +38,7 @@ const AnimalShowContainer = props => {
       setReviews(body["reviews"])
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
-  }, [])
+  }
 
   return (
     <div>
@@ -57,6 +61,7 @@ const AnimalShowContainer = props => {
       <div>
         <ReviewForm
           animalId={animalId}
+          addReview={addReview}
         />
       </div>
       <Link to="/">Home</Link>
