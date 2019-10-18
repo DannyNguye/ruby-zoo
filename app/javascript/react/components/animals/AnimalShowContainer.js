@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import AnimalShowPage from './AnimalShowPage'
 import AnimalReviewContainer from './AnimalReviewContainer'
 import ReviewForm from './ReviewForm'
@@ -22,6 +22,7 @@ const AnimalShowContainer = props => {
   const [errors, setErrors] = useState({})
   const [user, setUser] = useState({})
   const [loggedInStatus, setLoggedInStatus] = useState(false)
+  const [cssDisplay, setCssDisplay] = useState("hide-review-form")
 
   let animalId = props.match.params.id
 
@@ -113,6 +114,18 @@ const AnimalShowContainer = props => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
+  const showReviewForm = () => {
+    if (loggedInStatus) {
+      if (cssDisplay === "hide-review-form") {
+        setCssDisplay("display-review-form")
+      } else {
+        setCssDisplay("hide-review-form")
+      }
+    } else {
+      location.replace("/users/sign_in")
+    }
+  }
+
   return (
     <div>
       <div>
@@ -131,7 +144,8 @@ const AnimalShowContainer = props => {
           reviews={reviews}
         />
       </div>
-      <div>
+      <button onClick={showReviewForm}>Add a Review</button><br />
+      <div className={`${cssDisplay}`}>
         <ReviewForm
           reviewFields={reviewFields}
           errors={errors}
