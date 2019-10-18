@@ -73,19 +73,19 @@ const AnimalForm = props => {
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
 
-      setAnimalFields({
-        name: "",
-        species: "",
-        sex: "",
-        habitat: "",
-        diet: "",
-        description: ""
-      })
+    setAnimalFields({
+      name: "",
+      species: "",
+      sex: "",
+      habitat: "",
+      diet: "",
+      description: ""
+    })
     }
   }
 
   if (redirectNumber) {
-    return <Redirect to={`/animals`} />
+    return <Redirect to={`/animals/${redirectNumber}`} />
   }
 
   return(

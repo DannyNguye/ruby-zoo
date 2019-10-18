@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import AnimalShowPage from './AnimalShowPage'
 import AnimalReviewContainer from './AnimalReviewContainer'
+import ReviewForm from './ReviewForm'
 
 const AnimalShowContainer = props => {
   const [animal, setAnimal] = useState({
@@ -17,14 +18,19 @@ const AnimalShowContainer = props => {
   const [loggedInStatus, setLoggedInStatus] = useState(false)
 
   let animalId = props.match.params.id
+
   useEffect(() => {
+    addReview()
+  }, [])
+
+  const addReview = () => {
     fetch(`/api/v1/animals/${animalId}`)
     .then(response => {
       if (response.ok) {
         return response;
       } else {
         let errorMessage = `${response.status} (${response.statusText})`,
-            error = new Error(errorMessage);
+        error = new Error(errorMessage);
         throw(error);
       }
     })
@@ -36,7 +42,7 @@ const AnimalShowContainer = props => {
       setLoggedInStatus(body.logged_in)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
-  }, [])
+  }
 
   const showReviewForm = () => {
     if (loggedInStatus) {
@@ -65,6 +71,12 @@ const AnimalShowContainer = props => {
         />
       </div>
       <button onClick={showReviewForm}>Add a Review</button><br />
+      <div>
+        <ReviewForm
+          animalId={animalId}
+          addReview={addReview}
+        />
+      </div>
       <Link to="/">Home</Link>
     </div>
   )
