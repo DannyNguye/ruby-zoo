@@ -118,7 +118,7 @@ const ReviewForm = props => {
           />
         </label>
 
-        <input type="submit" value="Add Review" />
+        <input type="submit" value="Submit Review" />
       </form>
     </div>
   )
