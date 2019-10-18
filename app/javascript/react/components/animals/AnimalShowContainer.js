@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import AnimalShowPage from './AnimalShowPage'
 import AnimalReviewContainer from './AnimalReviewContainer'
 
@@ -13,6 +13,8 @@ const AnimalShowContainer = props => {
     description: ""
   })
   const [reviews, setReviews] = useState([])
+  const [user, setUser] = useState({})
+  const [loggedInStatus, setLoggedInStatus] = useState(false)
 
   let animalId = props.match.params.id
   useEffect(() => {
@@ -29,10 +31,20 @@ const AnimalShowContainer = props => {
     .then(response => response.json())
     .then(body => {
       setAnimal(body.animal)
-      setReviews(body.animal.reviews)
+      setReviews(body.reviews)
+      setUser(body.current_user)
+      setLoggedInStatus(body.logged_in)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
+
+  const showReviewForm = () => {
+    if (loggedInStatus) {
+      console.log("hi")
+    } else {
+      location.replace("/users/sign_in")
+    }
+  }
 
   return (
     <div>
@@ -52,6 +64,7 @@ const AnimalShowContainer = props => {
           reviews={reviews}
         />
       </div>
+      <button onClick={showReviewForm}>Add a Review</button><br />
       <Link to="/">Home</Link>
     </div>
   )
