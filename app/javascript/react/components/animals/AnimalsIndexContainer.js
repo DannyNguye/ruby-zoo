@@ -17,7 +17,7 @@ const AnimalsIndexContainer = props => {
     })
     .then(response => response.json())
     .then(body => {
-      setAnimals(body)
+      setAnimals(body.animals)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
@@ -25,8 +25,8 @@ const AnimalsIndexContainer = props => {
   const animalTiles = animals.map(animal => {
     return(
       <AnimalIndexTile
-        id={animal.id}
         key={animal.id}
+        id={animal.id}
         name={animal.name}
         species={animal.species}
       />

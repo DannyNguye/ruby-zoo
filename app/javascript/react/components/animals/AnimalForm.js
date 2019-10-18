@@ -64,8 +64,8 @@ const AnimalForm = props => {
     })
     .then(response => response.json())
     .then(body => {
-      if (body.id) {
-        setRedirectNumber(body.id)
+      if (body.animal.id) {
+        setRedirectNumber(body.animal.id)
       } else {
         setErrors(body.errors)
         setAnimalFields(body.fields)
