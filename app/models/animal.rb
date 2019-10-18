@@ -4,5 +4,7 @@ class Animal < ApplicationRecord
   validates :sex, presence: true
   validates :habitat, presence: true
 
+  mount_uploader :photo, AnimalPhotoUploader
+
   has_many :reviews
 end
