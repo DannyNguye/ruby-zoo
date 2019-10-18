@@ -9,7 +9,6 @@ const ReviewForm = props => {
     title: "",
     body: ""
   })
-
   const [errors, setErrors] = useState({})
 
   const handleInputChange = event => {
@@ -32,7 +31,6 @@ const ReviewForm = props => {
         }
       }
     })
-
     setErrors(submitErrors)
     return _.isEmpty(submitErrors)
   }
@@ -41,39 +39,39 @@ const ReviewForm = props => {
     event.preventDefault()
     if (validForSubmission()) {
       fetch(`/api/v1/animals/${props.animalId}/reviews`, {
-      credentials: "same-origin",
-      method: 'POST',
-      body: JSON.stringify(reviewFields),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      }
-    })
-    .then(response => {
-      if (response.ok) {
-        return response;
-      } else {
-        let errorMessage = `${response.status} (${response.statusText})`,
-         error = new Error(errorMessage);
-        throw(error);
-      }
-    })
-    .then(response => response.json())
-    .then(body => {
-      if (body.id) {
-        props.addReview()
-      } else {
-        setErrors(body.errors)
-        setReviewFields(body.fields)
-      }
-    })
-    .catch(error => console.error(`Error in fetch: ${error.message}`));
+        credentials: "same-origin",
+        method: 'POST',
+        body: JSON.stringify(reviewFields),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+           error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        if (body.id) {
+          props.addReview()
+        } else {
+          setErrors(body.errors)
+          setReviewFields(body.fields)
+        }
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
 
-    setReviewFields({
-      rating: "",
-      title: "",
-      body: ""
-    })
+      setReviewFields({
+        rating: "",
+        title: "",
+        body: ""
+      })
     }
   }
 
@@ -111,10 +109,10 @@ const ReviewForm = props => {
 
         <label htmlFor="body">Review:
           <input
-          type="text"
-          id="body"
-          value={reviewFields.body}
-          onChange={handleInputChange}
+            type="text"
+            id="body"
+            value={reviewFields.body}
+            onChange={handleInputChange}
           />
         </label>
 
