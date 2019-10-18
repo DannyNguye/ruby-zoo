@@ -101,8 +101,7 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
 
     it "creates a new animal" do
       user = FactoryBot.create(:user)
-      @request.env['devise.mapping'] = Devise.mappings[:user]
-      sign_in :user, user
+      sign_in user
       post_json = {
         animal: {
           name: "Charlie",
@@ -121,8 +120,7 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
 
     it "returns the json of the newly posted animal" do
       user = FactoryBot.create(:user)
-      @request.env['devise.mapping'] = Devise.mappings[:user]
-      sign_in :user, user
+      sign_in user
       post_json = {
         animal: {
           name: "Charlie",

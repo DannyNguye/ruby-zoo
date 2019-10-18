@@ -25,15 +25,14 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
   describe "POST#create" do
     it "creates a new review" do
       user = FactoryBot.create(:user)
-      @request.env['devise.mapping'] = Devise.mappings[:user]
-      sign_in :user, user
+      sign_in user
       post_json = {
         review: {
           rating: 3,
           title: "best coyote",
-          body: "smells funny",
-          animal_id: Animal.first.id
-        }
+          body: "smells funny"
+        },
+        animal_id: Animal.first.id
       }
 
       prev_count = Review.count
