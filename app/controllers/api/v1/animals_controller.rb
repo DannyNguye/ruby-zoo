@@ -9,8 +9,10 @@ class Api::V1::AnimalsController < ApiController
     animal = Animal.find(params[:id])
     render json: {
       animal: animal,
-      reviews: animal.reviews
-    }
+      reviews: animal.reviews,
+      current_user: current_user,
+      logged_in: user_signed_in?
+      }
   end
 
   def create
