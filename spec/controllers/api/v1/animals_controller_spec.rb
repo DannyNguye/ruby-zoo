@@ -34,24 +34,17 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
     it "should return a list of all the animals" do
       get :index
       returned_json = JSON.parse(response.body)
+
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
 
-      expect(returned_json.length).to eq 2
+      expect(returned_json.length).to eq 1
 
-      expect(returned_json[0]["name"]).to eq "Shannon"
-      expect(returned_json[0]["species"]).to eq "Chicken"
-      expect(returned_json[0]["sex"]).to eq "F"
-      expect(returned_json[0]["habitat"]).to eq "Desert"
-      expect(returned_json[0]["diet"]).to eq "Carnivore"
-      expect(returned_json[0]["description"]).to eq "He's like Wiley, but he can't talk"
+      expect(returned_json["animals"][0]["name"]).to eq "Shannon"
+      expect(returned_json["animals"][0]["species"]).to eq "Chicken"
 
-      expect(returned_json[1]["name"]).to eq "Jance"
-      expect(returned_json[1]["species"]).to eq "Bird"
-      expect(returned_json[1]["sex"]).to eq "F"
-      expect(returned_json[1]["habitat"]).to eq "City"
-      expect(returned_json[1]["diet"]).to eq "anything she can get her beak on"
-      expect(returned_json[1]["description"]).to eq "peck peck"
+      expect(returned_json["animals"][1]["name"]).to eq "Jance"
+      expect(returned_json["animals"][1]["species"]).to eq "Bird"
     end
   end
 
@@ -62,7 +55,7 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
 
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
-      expect(returned_json.length).to eq 2
+      expect(returned_json.length).to eq 4
       expect(returned_json["animal"]["name"]).to eq "Shannon"
       expect(returned_json["animal"]["species"]).to eq "Chicken"
       expect(returned_json["animal"]["sex"]).to eq "F"
@@ -71,13 +64,33 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
       expect(returned_json["animal"]["description"]).to eq "He's like Wiley, but he can't talk"
     end
 
-    it "should show reviews for the selected animal " do
+    it "should show reviews for the selected animal" do
       get :show, params: {id: animal1.id}
       returned_json = JSON.parse(response.body)
 
       expect(returned_json["reviews"][0]["title"]).to eq "cute elephant"
       expect(returned_json["reviews"][0]["rating"]).to eq 1
       expect(returned_json["reviews"][0]["body"]).to eq "He is really cute"
+    end
+
+    it "should show details for the current user" do
+      user = FactoryBot.create(:user)
+      @request.env['devise.mapping'] = Devise.mappings[:user]
+      sign_in :user, user
+      get :show, params: {id: animal1.id}
+      returned_json = JSON.parse(response.body)
+
+      expect(returned_json["current_user"]["email"]).to eq "user1@example.com"
+      expect(returned_json["current_user"]["username"]).to eq "user1"
+      expect(returned_json["logged_in"]).to eq true
+    end
+
+    it "should not send user data if not logged in" do
+      get :show, params: {id: animal1.id}
+      returned_json = JSON.parse(response.body)
+
+      expect(returned_json["current_user"]).to eq nil
+      expect(returned_json["logged_in"]).to eq false
     end
   end
 
@@ -136,17 +149,13 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
 
       post :create, params: post_json, format: :json
       returned_json = JSON.parse(response.body)
+
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
-
       expect(returned_json).to be_kind_of(Hash)
       expect(returned_json).to_not be_kind_of(Array)
-      expect(returned_json["name"]).to eq "Charlie"
-      expect(returned_json["species"]).to eq "Lizard"
-      expect(returned_json["sex"]).to eq "F"
-      expect(returned_json["habitat"]).to eq "Wilderness"
-      expect(returned_json["diet"]).to eq "Bugs"
-      expect(returned_json["description"]).to eq "Loves to eat bugs everyday"
+      expect(returned_json["animal"]["name"]).to eq "Charlie"
+      expect(returned_json["animal"]["species"]).to eq "Lizard"
     end
   end
 end

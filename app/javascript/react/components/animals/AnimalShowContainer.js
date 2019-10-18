@@ -44,14 +44,6 @@ const AnimalShowContainer = props => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
-  const showReviewForm = () => {
-    if (loggedInStatus) {
-      console.log("hi")
-    } else {
-      location.replace("/users/sign_in")
-    }
-  }
-
   return (
     <div>
       <div>
@@ -70,7 +62,6 @@ const AnimalShowContainer = props => {
           reviews={reviews}
         />
       </div>
-      <button onClick={showReviewForm}>Add a Review</button><br />
       <div>
         <ReviewForm
           animalId={animalId}
