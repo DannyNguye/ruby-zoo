@@ -38,13 +38,37 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
 
-      expect(returned_json.length).to eq 1
+      expect(returned_json.length).to eq 2
 
       expect(returned_json["animals"][0]["name"]).to eq "Shannon"
       expect(returned_json["animals"][0]["species"]).to eq "Chicken"
 
       expect(returned_json["animals"][1]["name"]).to eq "Jance"
       expect(returned_json["animals"][1]["species"]).to eq "Bird"
+    end
+
+    it "should send user_role as admin if signed in user admin" do
+      user = FactoryBot.create(:user)
+      user.role = "admin"
+      user.save
+      sign_in user
+      get :index
+      returned_json = JSON.parse(response.body)
+      expect(returned_json["user_role"]).to eq "admin"
+    end
+
+    it "should send user_role as user if signed in not admin" do
+      user = FactoryBot.create(:user)
+      sign_in user
+      get :index
+      returned_json = JSON.parse(response.body)
+      expect(returned_json["user_role"]).to eq "user"
+    end
+
+    it "should send user_role as "" if user is not signed in" do
+      get :index
+      returned_json = JSON.parse(response.body)
+      expect(returned_json["user_role"]).to eq ""
     end
   end
 
@@ -55,7 +79,7 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
 
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
-      expect(returned_json.length).to eq 4
+      expect(returned_json.length).to eq 1
       expect(returned_json["animal"]["name"]).to eq "Shannon"
       expect(returned_json["animal"]["species"]).to eq "Chicken"
       expect(returned_json["animal"]["sex"]).to eq "F"
@@ -68,9 +92,9 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
       get :show, params: {id: animal1.id}
       returned_json = JSON.parse(response.body)
 
-      expect(returned_json["reviews"][0]["title"]).to eq "cute elephant"
-      expect(returned_json["reviews"][0]["rating"]).to eq 1
-      expect(returned_json["reviews"][0]["body"]).to eq "He is really cute"
+      expect(returned_json["animal"]["reviews"][0]["title"]).to eq "cute elephant"
+      expect(returned_json["animal"]["reviews"][0]["rating"]).to eq 1
+      expect(returned_json["animal"]["reviews"][0]["body"]).to eq "He is really cute"
     end
 
     it "should show details for the current user" do
@@ -79,18 +103,19 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
       get :show, params: {id: animal1.id}
       returned_json = JSON.parse(response.body)
 
-      expect(returned_json["current_user"]["email"]).to eq "user1@example.com"
-      expect(returned_json["current_user"]["username"]).to eq "user1"
-      expect(returned_json["logged_in"]).to eq true
+      expect(returned_json["animal"]["current_user"]["email"]).to eq "user3@example.com"
+      expect(returned_json["animal"]["current_user"]["username"]).to eq "user3"
+      expect(returned_json["animal"]["logged_in"]).to eq true
     end
 
     it "should not send user data if not logged in" do
       get :show, params: {id: animal1.id}
       returned_json = JSON.parse(response.body)
 
-      expect(returned_json["current_user"]).to eq nil
-      expect(returned_json["logged_in"]).to eq false
+      expect(returned_json["animal"]["current_user"]).to eq nil
+      expect(returned_json["animal"]["logged_in"]).to eq false
     end
+
   end
 
   describe "POST#create" do
