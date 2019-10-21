@@ -25,11 +25,24 @@ describe("AnimalShowPage", () => {
     )
   })
 
-  it("renders an h2 tag with the name of the animal", () => {
-    expect(wrapper.find("h2").text()).toBe("Hugo")
+  it("renders an h2 tag with the name of the animal and the species", () => {
+    expect(wrapper.find("h2").text()).toBe("Hugo the Hippo")
   })
 
-  it("renders an h3 tag with the animal species", () => {
-    expect(wrapper.find("h3").text()).toBe("Species: Hippo")
+  it("renders an li tag with the sex of the animal", () => {
+    expect(wrapper.find("#sex").text()).toBe("M")
   })
+
+  it("renders an li tag with the habitat of the animal", () => {
+    expect(wrapper.find("#habitat").text()).toBe("Jungle")
+  })
+
+  it("renders an li tag with the diet of the animal", () => {
+    expect(wrapper.find("#diet").text()).toBe("Bananas")
+  })
+
+  it("renders an li tag with the description of the animal", () => {
+    expect(wrapper.find("#description").text()).toBe("Loves to sleep all day underwater!")
+  })
+
 })

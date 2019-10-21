@@ -23,7 +23,7 @@ const AnimalReviewContainer = props => {
   })
 
   return(
-    <div>
+    <div className="review-container">
       <h3>Reviews</h3>
       {reviewTiles}
     </div>

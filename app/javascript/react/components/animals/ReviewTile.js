@@ -7,10 +7,12 @@ const ReviewTile = props => {
     buttons = <AdminButtonTile />
   }
   return(
-    <div>
-      <h4>Title: {props.title}</h4>
-      <h5>Rating: {props.rating}</h5>
-      <h6>Review: {props.body}</h6>
+    <div className="review-tile">
+      <ul>
+        <li><h4>Title: {props.title}</h4></li>
+        <li><h3>Rating: {props.rating}</h3></li>
+        <li><p>"{props.body}"</p></li>
+      </ul>
       {buttons}
     </div>
   )
