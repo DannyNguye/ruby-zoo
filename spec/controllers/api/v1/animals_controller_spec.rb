@@ -32,6 +32,8 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
 
   describe "GET#index" do
     it "should return a list of all the animals" do
+      user = FactoryBot.create(:user)
+      sign_in user
       get :index
       returned_json = JSON.parse(response.body)
 
@@ -45,30 +47,21 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
 
       expect(returned_json["animals"][1]["name"]).to eq "Jance"
       expect(returned_json["animals"][1]["species"]).to eq "Bird"
+      expect(returned_json["user_role"]).to eq "user"
     end
 
     it "should send user_role as admin if signed in user admin" do
-      user = FactoryBot.create(:user)
-      user.role = "admin"
-      user.save
+      user = FactoryBot.create(:user, role: "admin")
       sign_in user
       get :index
       returned_json = JSON.parse(response.body)
       expect(returned_json["user_role"]).to eq "admin"
     end
 
-    it "should send user_role as user if signed in not admin" do
-      user = FactoryBot.create(:user)
-      sign_in user
+    it "should send user_role as guest if user is not signed in" do
       get :index
       returned_json = JSON.parse(response.body)
-      expect(returned_json["user_role"]).to eq "user"
-    end
-
-    it "should send user_role as "" if user is not signed in" do
-      get :index
-      returned_json = JSON.parse(response.body)
-      expect(returned_json["user_role"]).to eq ""
+      expect(returned_json["user_role"]).to eq "guest"
     end
   end
 

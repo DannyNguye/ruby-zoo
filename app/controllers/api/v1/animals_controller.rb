@@ -2,8 +2,8 @@ class Api::V1::AnimalsController < ApiController
   before_action :authenticate_user!, except: [:show, :index]
 
   def index
-    animals=Animal.all
-    user_role = ""
+    animals = Animal.all
+    user_role = "guest"
     if user_signed_in?
       user_role = current_user.role
     end
@@ -15,7 +15,7 @@ class Api::V1::AnimalsController < ApiController
 
   def show
     animal = Animal.find(params[:id])
-    render json: animal, serializer: AnimalShowSerializer, scope: [current_user,user_signed_in?]
+    render json: animal, serializer: AnimalShowSerializer, scope: {current_user: current_user, logged_in: user_signed_in?}
   end
 
   def create

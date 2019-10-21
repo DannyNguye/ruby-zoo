@@ -1,9 +1,10 @@
 import React from 'react'
+import AdminButtonTile from './AdminButtonTile'
 
 const ReviewTile = props => {
   let buttons
   if(props.showButton){
-    buttons = <div><button>Edit</button><br/><button>Delete</button></div>
+    buttons = <AdminButtonTile />
   }
   return(
     <div>
