@@ -3,6 +3,7 @@ import AnimalIndexTile from "./AnimalIndexTile"
 
 const AnimalsIndexContainer = props => {
   const [animals, setAnimals] = useState([])
+  const [userRole, setUserRole] = useState("")
 
   useEffect(() => {
     fetch("/api/v1/animals.json")
@@ -18,17 +19,23 @@ const AnimalsIndexContainer = props => {
     .then(response => response.json())
     .then(body => {
       setAnimals(body.animals)
+      setUserRole(body.user_role)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
 
   const animalTiles = animals.map(animal => {
+    let showButton = false
+    if(userRole === "admin"){
+      showButton = true
+    }
     return(
       <AnimalIndexTile
         key={animal.id}
         id={animal.id}
         name={animal.name}
         species={animal.species}
+        showButton={showButton}
       />
     )
   })

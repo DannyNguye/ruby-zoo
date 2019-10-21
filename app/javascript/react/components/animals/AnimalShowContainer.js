@@ -41,9 +41,9 @@ const AnimalShowContainer = props => {
     .then(response => response.json())
     .then(body => {
       setAnimal(body.animal)
-      setReviews(body.reviews)
-      setUser(body.current_user)
-      setLoggedInStatus(body.logged_in)
+      setReviews(body.animal.reviews)
+      setUser(body.animal.current_user)
+      setLoggedInStatus(body.animal.logged_in)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
@@ -143,6 +143,7 @@ const AnimalShowContainer = props => {
       <div>
         <AnimalReviewContainer
           reviews={reviews}
+          user={user}
         />
       </div>
       <button onClick={showReviewForm}>Add a Review</button><br />
