@@ -7,11 +7,11 @@ const ReviewForm = props => {
   return(
     <div>
       <h2>Add a New Review</h2>
-      <form onSubmit={props.handleSubmit}>
+      <form onSubmit={props.handleSubmit} id="review-form">
         <ErrorList
           errors={props.errors}
         />
-        <label htmlFor="title">Title:
+      <label htmlFor="title">Title:
           <input
             type="text"
             id="title"
