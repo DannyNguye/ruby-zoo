@@ -89,7 +89,7 @@ const AnimalForm = props => {
   }
 
   return(
-    <div>
+    <div class="grid-container form-container">
       <h2>Add a New Animal</h2>
       <form onSubmit={handleSubmitHandler}>
         <ErrorList
@@ -153,7 +153,7 @@ const AnimalForm = props => {
           />
         </label>
 
-        <input type="submit" value="Add Animal" />
+        <input className="input-button" type="submit" value="Add Animal" />
       </form>
     </div>
   )

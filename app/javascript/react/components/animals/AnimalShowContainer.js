@@ -128,8 +128,8 @@ const AnimalShowContainer = props => {
   }
 
   return (
-    <div>
-      <div>
+    <div className="row">
+      <div className="columns small-6">
         <AnimalShowPage
           id={animal.id}
           name={animal.name}
@@ -139,22 +139,27 @@ const AnimalShowContainer = props => {
           diet={animal.diet}
           description={animal.description}
         />
+        <div className="review-button">
+          <button onClick={showReviewForm}>Add a Review</button>
+        </div>
       </div>
+      <div className="columns small-6">
+        <div className={`${cssDisplay}`}>
+          <ReviewForm
+            reviewFields={reviewFields}
+            errors={errors}
+            handleSubmit={handleSubmit}
+            handleInputChange={handleInputChange}
+            name={animal.name}
+          />
+        </div>
+      </div>
+
       <div>
         <AnimalReviewContainer
           reviews={reviews}
         />
       </div>
-      <button onClick={showReviewForm}>Add a Review</button><br />
-      <div className={`${cssDisplay}`}>
-        <ReviewForm
-          reviewFields={reviewFields}
-          errors={errors}
-          handleSubmit={handleSubmit}
-          handleInputChange={handleInputChange}
-        />
-      </div>
-      <Link to="/">Home</Link>
     </div>
   )
 }

@@ -13,7 +13,7 @@ feature 'user signs in and visits new animal form', %Q{
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
 
-    click_button 'Log in'
+    click_button 'LOG IN'
 
     visit animals_new_path
 

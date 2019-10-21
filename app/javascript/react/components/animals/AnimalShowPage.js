@@ -2,14 +2,21 @@ import React from 'react'
 
 const AnimalShowPage = props => {
   return (
-    <div>
-      <h2>{props.name}</h2>
-      <h3>Species: {props.species}</h3>
+    <div className="show-div">
+      <h2>{props.name} the {props.species}</h2>
       <ul>
-        <li>Sex: {props.sex}</li>
-        <li>Habitat: {props.habitat}</li>
-        <li>Diet: {props.diet}</li>
-        <li>Description: {props.description}</li>
+        <li className="attribute">Sex:</li>
+          <li>{props.sex}</li>
+          <br/>
+        <li className="attribute">Habitat:</li>
+          <li>{props.habitat}</li>
+          <br/>
+        <li className="attribute">Diet:</li>
+          <li>{props.diet}</li>
+          <br/>
+        <li className="attribute">Description:</li>
+          <li>{props.description}</li>
+          <br/>
       </ul>
     </div>
   )
