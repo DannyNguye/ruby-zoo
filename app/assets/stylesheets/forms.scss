@@ -1,0 +1,36 @@
+.form-container {
+  background-color: #C280FF;
+  margin: 20px auto;
+  width: 500px;
+  align-content: center;
+  border-radius: 10px;
+  text-align: justify;
+  padding: 2em;
+  box-shadow: 5px 10px 8px #888888;
+}
+
+.form-container h2 {
+  font-family: 'Cabin Sketch', cursive;
+  text-align: center;
+}
+
+.input-button {
+  background-color: #F59A23;
+  border: none;
+  color: white;
+  margin: 0.25em;
+  border-radius: 4px;
+  padding: 0.75em;
+  width: 10em;
+  height: 3em;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  transition: 0.3s;
+  margin-top: 1em;
+  text-align: center;
+}
+
+.input-button:hover {
+  background-color: #FACD91;
+  cursor: pointer;
+}

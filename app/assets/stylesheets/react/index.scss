@@ -1,7 +1,34 @@
 @import url('https://fonts.googleapis.com/css?family=Bree+Serif&display=swap');
 
+@import url('https://fonts.googleapis.com/css?family=Cabin+Sketch&display=swap');
+
 #site-title a {
   color: white;
+  font-family: 'Cabin Sketch', cursive;
+  font-size: 2em;
+  padding-left: 0.5em;
+  transition: 0.2s;
+}
+
+#site-title a:hover {
+  text-shadow: 2px 2px 8px #8400FF;
+
+}
+
+.top-bar ul {
+  background-color: #C280FF;
+}
+
+.menu li.header-link a {
+  color: white;
+  font-family: 'Cabin Sketch', cursive;
+  padding-left: 1em;
+  font-size: 2em;
+  transition: 0.2s;
+}
+
+.menu li.header-link a:hover {
+  color: #8400FF;
 }
 
 .enter-buttons li {
@@ -9,21 +36,23 @@
 }
 
 .enter-buttons input {
-  background-color: #FACD91;
+  background-color: #F59A23;
   border: none;
   color: white;
   margin: 0.25em;
   border-radius: 4px;
   padding: 0.75em;
   width: 10em;
+  height: 3em;
   text-transform: uppercase;
-  font-size: 0.75em;
+  font-size: 0.8em;
   transition: 0.3s;
   margin-top: 1em;
+  text-align: center;
 }
 
 .enter-buttons input:hover {
-  background-color: #F59A23;
+  background-color: #FACD91;
   cursor: pointer;
 }
 
@@ -39,8 +68,9 @@
   background-color: #8400FF;
   border-radius: 15px;
   margin: 1em;
-  max-width: 250px;
+  max-width: 265px;
   padding: auto;
+  box-shadow: 5px 10px 8px #888888;
 }
 
 .animal-tile h4 {

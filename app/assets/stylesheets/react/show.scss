@@ -5,3 +5,74 @@
 .display-review-form {
   display: contents;
 }
+
+.show-div {
+  margin: auto 50px auto 50px;
+  padding: 2em;
+}
+
+.show-div h2, h3 {
+  font-family: 'Cabin Sketch', cursive;
+  border-bottom: 1px solid #8400FF;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+}
+
+.review-tile {
+  border-bottom: 1px solid black;
+  max-width: 1000px;
+  margin: 2em;
+}
+
+.review-tile h4 {
+  font-family: 'Bree Serif', serif;
+  color: black;
+  margin-bottom: 0;
+}
+
+.review-tile h3 {
+  font-family: 'Bree Serif', serif;
+  color: #FACD91;
+  text-align: justify;
+  border: none;
+}
+
+.review-tile ul {
+  list-style: none;
+}
+
+.review-container {
+  margin: 0 10em 0 10em;
+}
+
+.review-button {
+  margin-left: 12em;
+}
+
+.review-button button {
+  background-color: #F59A23;
+  border: none;
+  color: white;
+  margin: 0.25em;
+  border-radius: 4px;
+  padding: 0.75em;
+  width: 10em;
+  height: 3em;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  transition: 0.3s;
+  margin-top: 1em;
+  text-align: center;
+}
+
+.review-button button:hover {
+  background-color: #FACD91;
+  cursor: pointer;
+}
+
+.attribute {
+  font-weight: bold;
+}
