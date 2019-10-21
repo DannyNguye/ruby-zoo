@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import AnimalIndexTile from "./AnimalIndexTile"
+import WelcomeTile from "./WelcomeTile"
 
 const AnimalsIndexContainer = props => {
   const [animals, setAnimals] = useState([])
@@ -40,8 +41,13 @@ const AnimalsIndexContainer = props => {
     )
   })
   return(
-    <div className="row">
-      {animalTiles}
+    <div>
+      <div className="row">
+        <WelcomeTile />
+      </div>
+      <div className="row">
+        {animalTiles}
+      </div>
     </div>
   )
 }

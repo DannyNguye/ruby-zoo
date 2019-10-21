@@ -26,5 +26,4 @@ describe("ReviewTile", () => {
   it("renders an h4 tag with the reviews", () => {
     expect(wrapper.find("h4").text()).toBe("Title: cute elephant")
   })
-
 })

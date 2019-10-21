@@ -31,5 +31,4 @@ describe("AnimalTile", () => {
   it("renders a button-link that will lead to an animal show page", () => {
     expect(wrapper.find("a").text()).toBe("View Details")
   })
-
 })
