@@ -6,16 +6,16 @@ const AnimalShowPage = props => {
       <h2>{props.name} the {props.species}</h2>
       <ul>
         <li className="attribute">Sex:</li>
-          <li>{props.sex}</li>
+          <li id="sex">{props.sex}</li>
           <br/>
         <li className="attribute">Habitat:</li>
-          <li>{props.habitat}</li>
+          <li id="habitat">{props.habitat}</li>
           <br/>
         <li className="attribute">Diet:</li>
-          <li>{props.diet}</li>
+          <li id="diet">{props.diet}</li>
           <br/>
         <li className="attribute">Description:</li>
-          <li>{props.description}</li>
+          <li id="description">{props.description}</li>
           <br/>
       </ul>
     </div>
