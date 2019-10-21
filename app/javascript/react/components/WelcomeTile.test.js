@@ -7,10 +7,9 @@ Enzyme.configure({ adapter: new Adapter() })
 import WelcomeTile from "./animals/WelcomeTile"
 
 describe("WelcomeTile", () => {
-  let wrapper, onClickMock
+  let wrapper
 
   beforeEach(() => {
-    onClickMock = jest.fn()
     wrapper = mount(
       <BrowserRouter>
         <WelcomeTile />
@@ -18,15 +17,15 @@ describe("WelcomeTile", () => {
     )
   })
 
-  it("renders an h1 tag with the animal name", () => {
+  it("renders an h1 tag with welcome message", () => {
     expect(wrapper.find("h1").text()).toBe("Welcome to the Zoo")
   })
 
-  it("renders an h1 tag with the animal name", () => {
+  it("renders a p tag with a welcoming paragraph", () => {
     expect(wrapper.find("p").text()).toContain("We hope you enjoyed your time in the zoo.")
   })
 
-  it("renders a button-link that will lead to an animal show page", () => {
+  it("renders a button-link that will lead to an animal form page", () => {
     expect(wrapper.find("Link").props().to).toBe("/animals/new")
   })
 })
