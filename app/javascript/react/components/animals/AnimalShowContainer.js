@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import _ from 'lodash'
 import AnimalShowPage from './AnimalShowPage'
 import AnimalReviewContainer from './AnimalReviewContainer'
 import ReviewForm from './ReviewForm'
@@ -104,8 +105,8 @@ const AnimalShowContainer = props => {
     })
     .then(response => response.json())
     .then(body => {
-      if (body.id) {
-        setReviews([...reviews, body])
+      if (body.review.id) {
+        setReviews([...reviews, body.review])
       } else {
         setErrors(body.errors)
         setReviewFields(body.fields)

@@ -75,8 +75,7 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
 
     it "should show details for the current user" do
       user = FactoryBot.create(:user)
-      @request.env['devise.mapping'] = Devise.mappings[:user]
-      sign_in :user, user
+      sign_in user
       get :show, params: {id: animal1.id}
       returned_json = JSON.parse(response.body)
 
