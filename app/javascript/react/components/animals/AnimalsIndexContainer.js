@@ -36,6 +36,7 @@ const AnimalsIndexContainer = props => {
         id={animal.id}
         name={animal.name}
         species={animal.species}
+        imageUrl={animal.imageurl}
         showButton={showButton}
       />
     )

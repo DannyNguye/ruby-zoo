@@ -10,7 +10,8 @@ const AnimalForm = props => {
     sex: "",
     habitat: "",
     diet: "",
-    description: ""
+    description: "",
+    imageurl: ""
   })
 
   const [errors, setErrors] = useState({})
@@ -79,7 +80,8 @@ const AnimalForm = props => {
       sex: "",
       habitat: "",
       diet: "",
-      description: ""
+      description: "",
+      imageurl: ""
     })
     }
   }
@@ -89,7 +91,7 @@ const AnimalForm = props => {
   }
 
   return(
-    <div class="grid-container form-container">
+    <div className="grid-container form-container">
       <h2>Add a New Animal</h2>
       <form onSubmit={handleSubmitHandler}>
         <ErrorList
@@ -135,7 +137,7 @@ const AnimalForm = props => {
           />
         </label>
 
-        <label htmlFor="diet">Diet:
+        <label htmlFor="diet">Diet (optional):
           <input
             type="text"
             id="diet"
@@ -144,11 +146,20 @@ const AnimalForm = props => {
           />
         </label>
 
-        <label htmlFor="description">Description:
+        <label htmlFor="description">Description (optional):
           <input
             type="text"
             id="description"
             value={animalFields.description}
+            onChange={handleInputChange}
+          />
+        </label>
+
+        <label htmlFor="imageurl">Image URL (optional):
+          <input
+            type="text"
+            id="imageurl"
+            value={animalFields.imageurl}
             onChange={handleInputChange}
           />
         </label>
