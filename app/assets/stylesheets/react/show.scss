@@ -23,7 +23,6 @@ ul {
 
 .review-tile {
   border-bottom: 1px solid black;
-  max-width: 1000px;
   margin: 2em;
 }
 
@@ -33,7 +32,7 @@ ul {
   margin-bottom: 0;
 }
 
-.review-tile h3 {
+.review-tile h5 {
   font-family: 'Bree Serif', serif;
   color: #FACD91;
   text-align: justify;
@@ -45,7 +44,7 @@ ul {
 }
 
 .review-container {
-  margin: 0 10em 0 10em;
+  margin: auto;
 }
 
 .review-button {
