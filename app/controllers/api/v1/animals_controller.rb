@@ -34,6 +34,10 @@ class Api::V1::AnimalsController < ApiController
   private
 
   def animal_params
-    params.require(:animal).permit(:name, :species, :sex, :habitat, :diet, :description)
+    if params.require(:animal)[:imageurl] == ""
+      params.require(:animal).permit(:name, :species, :sex, :habitat, :diet, :description)
+    else
+      params.require(:animal).permit(:name, :species, :sex, :habitat, :diet, :description, :imageurl)
+    end
   end
 end
