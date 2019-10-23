@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2019_10_21_200100) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "photo"
+    t.string "imageurl", default: "https://papermilkdesign.com/images/zoo-clipart-background-5.jpg"
   end
 
   create_table "reviews", force: :cascade do |t|

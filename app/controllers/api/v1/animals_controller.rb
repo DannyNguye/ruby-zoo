@@ -3,7 +3,7 @@ class Api::V1::AnimalsController < ApiController
 
   def index
     animals = Animal.all
-    user_role = ""
+    user_role = "guest"
     if user_signed_in?
       user_role = current_user.role
     end
@@ -15,7 +15,7 @@ class Api::V1::AnimalsController < ApiController
 
   def show
     animal = Animal.find(params[:id])
-    render json: animal, serializer: AnimalShowSerializer, scope: [current_user,user_signed_in?]
+    render json: animal, serializer: AnimalShowSerializer, scope: {current_user: current_user, logged_in: user_signed_in?}
   end
 
   def create
@@ -34,6 +34,10 @@ class Api::V1::AnimalsController < ApiController
   private
 
   def animal_params
-    params.require(:animal).permit(:name, :species, :sex, :habitat, :diet, :description)
+    if params.require(:animal)[:imageurl] == ""
+      params.require(:animal).permit(:name, :species, :sex, :habitat, :diet, :description)
+    else
+      params.require(:animal).permit(:name, :species, :sex, :habitat, :diet, :description, :imageurl)
+    end
   end
 end

@@ -4,10 +4,10 @@ class AnimalShowSerializer < ActiveModel::Serializer
   has_many :reviews
 
   def current_user
-    scope[0]
+    scope[:current_user]
   end
 
   def logged_in
-    scope[1]
+    scope[:logged_in]
   end
 end
