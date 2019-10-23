@@ -115,6 +115,8 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
   end
 
   describe "POST#create" do
+    user = FactoryBot.create(:user)
+    sign_in user
     it "returns a 401 authentication error when not logged in" do
       post_json = {
         animal: {

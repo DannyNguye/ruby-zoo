@@ -20,6 +20,7 @@ class Api::V1::AnimalsController < ApiController
 
   def create
     animal = Animal.new(animal_params)
+    animal.user = current_user
 
     if animal.save
       render json: animal
