@@ -15,6 +15,7 @@ describe("AnimalTile", () => {
         <AnimalIndexTile
           name="Ryan"
           species="Dragon"
+          imageUrl="https://papermilkdesign.com/images/zoo-clipart-background-5.jpg"
         />
       </BrowserRouter>
     )
@@ -26,6 +27,10 @@ describe("AnimalTile", () => {
 
   it("renders a h5 tag with the animal species", () => {
     expect(wrapper.find("h5").text()).toBe("Dragon")
+  })
+
+  it("renders a default image for the animal tile", () => {
+    expect(wrapper.find("img").prop("src")).toEqual("https://papermilkdesign.com/images/zoo-clipart-background-5.jpg")
   })
 
   it("renders a button-link that will lead to an animal show page", () => {

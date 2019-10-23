@@ -18,13 +18,16 @@ const AnimalReviewContainer = props => {
         rating={review.rating}
         body={review.body}
         showButton={showButton}
+        animalId={props.animalId}
       />
     )
   })
 
   return(
-    <div className="review-container">
-      <h3>Reviews</h3>
+    <div className="review-container row">
+      <div className="reviews-header columns large-10 small-12">
+        <h3>Reviews</h3>
+      </div>
       {reviewTiles}
     </div>
   )

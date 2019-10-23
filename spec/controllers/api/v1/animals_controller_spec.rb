@@ -1,13 +1,20 @@
 require "rails_helper"
 
 RSpec.describe Api::V1::AnimalsController, type: :controller do
+  let!(:user1) { User.create(
+    username: "John",
+    email: "john@gmail.com",
+    password: "john123"
+  ) }
   let!(:animal1) { Animal.create(
     name: "Shannon",
     species: "Chicken",
     sex: "F",
     habitat: "Desert",
     diet: "Carnivore",
-    description: "He's like Wiley, but he can't talk"
+    description: "He's like Wiley, but he can't talk",
+    user: user1,
+    imageurl: "http://www.chickenimage.com/chicken.jpg"
   ) }
   let!(:animal2) { Animal.create(
     name: "Jance",
@@ -15,12 +22,8 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
     sex: "F",
     habitat: "City",
     diet: "anything she can get her beak on",
-    description: "peck peck"
-  ) }
-  let!(:user1) { User.create(
-    username: "John",
-    email: "john@gmail.com",
-    password: "john123"
+    description: "peck peck",
+    user: user1
   ) }
   let!(:review1) { Review.create(
     title: "cute elephant",
@@ -44,9 +47,11 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
 
       expect(returned_json["animals"][0]["name"]).to eq "Shannon"
       expect(returned_json["animals"][0]["species"]).to eq "Chicken"
+      expect(returned_json["animals"][0]["imageurl"]).to eq "http://www.chickenimage.com/chicken.jpg"
 
       expect(returned_json["animals"][1]["name"]).to eq "Jance"
       expect(returned_json["animals"][1]["species"]).to eq "Bird"
+      expect(returned_json["animals"][1]["imageurl"]).to eq "https://papermilkdesign.com/images/zoo-clipart-background-5.jpg"
       expect(returned_json["user_role"]).to eq "user"
     end
 
@@ -108,7 +113,6 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
       expect(returned_json["animal"]["current_user"]).to eq nil
       expect(returned_json["animal"]["logged_in"]).to eq false
     end
-
   end
 
   describe "POST#create" do
@@ -148,7 +152,7 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
       expect(Animal.count).to eq(prev_count + 1)
     end
 
-    it "returns the json of the newly posted animal" do
+    it "returns the json of the newly posted animal with default image if image url is not provided" do
       user = FactoryBot.create(:user)
       sign_in user
       post_json = {
@@ -171,6 +175,34 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
       expect(returned_json).to_not be_kind_of(Array)
       expect(returned_json["animal"]["name"]).to eq "Charlie"
       expect(returned_json["animal"]["species"]).to eq "Lizard"
+      expect(returned_json["animal"]["imageurl"]).to eq "https://papermilkdesign.com/images/zoo-clipart-background-5.jpg"
+    end
+
+    it "returns the json of the newly posted animal if the image url is provided" do
+      user = FactoryBot.create(:user)
+      sign_in user
+      post_json = {
+        animal: {
+          name: "Charlie",
+          species: "Lizard",
+          sex: "F",
+          habitat: "Wilderness",
+          diet: "Bugs",
+          description: "Loves to eat bugs everyday",
+          imageurl: "http://www.lizardimages.com/lizard.jpg"
+        }
+      }
+
+      post :create, params: post_json, format: :json
+      returned_json = JSON.parse(response.body)
+
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq("application/json")
+      expect(returned_json).to be_kind_of(Hash)
+      expect(returned_json).to_not be_kind_of(Array)
+      expect(returned_json["animal"]["name"]).to eq "Charlie"
+      expect(returned_json["animal"]["species"]).to eq "Lizard"
+      expect(returned_json["animal"]["imageurl"]).to eq "http://www.lizardimages.com/lizard.jpg"
     end
   end
 end

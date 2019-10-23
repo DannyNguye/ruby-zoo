@@ -13,7 +13,7 @@ const AnimalIndexTile = props => {
       <h5>{props.species}</h5>
       {buttons}
       <div className="animal-tile-image">
-        <img src="https://via.placeholder.com/150"/>
+        <img className="animal-image-sizer" src={props.imageUrl}/>
       </div>
       <div className="detail-button-container">
         <Link className="button detail-button" to={`/animals/${props.id}`}>
