@@ -18,6 +18,7 @@ const AnimalReviewContainer = props => {
         rating={review.rating}
         body={review.body}
         showButton={showButton}
+        animalId={props.animalId}
       />
     )
   })
