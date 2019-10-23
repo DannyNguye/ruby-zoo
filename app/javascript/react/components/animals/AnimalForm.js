@@ -147,7 +147,7 @@ const AnimalForm = props => {
         </label>
 
         <label htmlFor="description">Description (optional):
-          <input
+          <textarea
             type="text"
             id="description"
             value={animalFields.description}
