@@ -19,9 +19,9 @@ const VotesTile = props => {
   return(
     <div>
       <form>
-        <button className="fas fa-paw" id="up" onClick={handleClick}></button>
+        <button className="fa fa-paw" id="up" onClick={handleClick}></button>
         <span id="up-span">{upVoteCount}</span>
-        <button className="fas fa-paw fa-flip-vertical" id="down" onClick={handleClick}></button>
+        <button className="fa fa-paw fa-flip-vertical" id="down" onClick={handleClick}></button>
         <span id="down-span">{downVoteCount}</span>
       </form>
     </div>
