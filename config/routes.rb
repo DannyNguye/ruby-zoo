@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   get '/animals/:id', to: "static_pages#index"
   get '/profiles/show', to: "profiles#show"
 
-
   namespace :api do
     namespace :v1 do
       resources :animals, only: [:index, :show, :create] do
