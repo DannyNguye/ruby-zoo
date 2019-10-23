@@ -11,7 +11,9 @@
   <nav class="top-bar header">
     <h1 id="site-title"><a href="/">RubyZoo</a></h1>
     <ul class="menu header-nav">
-      <li class="header-link"><%= link_to 'Profile', "/" %></li>
+      <% if current_user %>
+        <li class="header-link"><%= link_to 'Profile', "/profiles/show" %></li>
+      <% end %>
       <li class="header-link"><%= link_to 'Add Animal', animals_new_path %></li>
       <li class="header-link"><%= link_to 'About', "/" %></li>
       <li class="header-link"><%= link_to 'Contribute', "/" %></li>
