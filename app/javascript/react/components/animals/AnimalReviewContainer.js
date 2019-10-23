@@ -24,7 +24,7 @@ const AnimalReviewContainer = props => {
   })
 
   return(
-    <div className="review-container row">
+    <div className="review-container grid-x align-center">
       <div className="reviews-header columns large-10 small-12">
         <h3>Reviews</h3>
       </div>
