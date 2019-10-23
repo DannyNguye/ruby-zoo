@@ -11,7 +11,8 @@ const AnimalShowContainer = props => {
     sex: "",
     habitat: "",
     diet: "",
-    description: ""
+    description: "",
+    imageurl: ""
   })
   const [reviewFields, setReviewFields] = useState({
     rating: "",
@@ -23,6 +24,7 @@ const AnimalShowContainer = props => {
   const [user, setUser] = useState({})
   const [loggedInStatus, setLoggedInStatus] = useState(false)
   const [cssDisplay, setCssDisplay] = useState("hide-review-form")
+  const [cssPictureDisplay, setCssPictureDisplay] = useState("display-review-form")
 
   let animalId = props.match.params.id
 
@@ -118,8 +120,10 @@ const AnimalShowContainer = props => {
     if (loggedInStatus) {
       if (cssDisplay === "hide-review-form") {
         setCssDisplay("display-review-form")
+        setCssPictureDisplay("hide-review-form")
       } else {
         setCssDisplay("hide-review-form")
+        setCssPictureDisplay("display-review-form")
       }
     } else {
       location.replace("/users/sign_in")
@@ -142,7 +146,7 @@ const AnimalShowContainer = props => {
           <button onClick={showReviewForm}>Add a Review</button>
         </div>
       </div>
-      <div className="columns small-6">
+      <div className="columns small-6 animal-image text-center">
         <div className={`${cssDisplay}`}>
           <ReviewForm
             reviewFields={reviewFields}
@@ -152,8 +156,11 @@ const AnimalShowContainer = props => {
             name={animal.name}
           />
         </div>
+        <div className={`${cssPictureDisplay}`}>
+          <img src={`${animal.imageurl}`}></img>
+        </div>
       </div>
-      <div>
+      <div className="columns large-12">
         <AnimalReviewContainer
           reviews={reviews}
           user={user}

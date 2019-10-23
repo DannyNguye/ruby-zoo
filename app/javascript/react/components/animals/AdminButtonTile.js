@@ -2,8 +2,8 @@ import React from 'react'
 
 const AdminButtonTile = props => {
   return(
-    <div>
-      <button>Edit</button><br/>
+    <div className="admin-buttons">
+      <button>Edit</button>
       <button>Delete</button>
     </div>
   )
