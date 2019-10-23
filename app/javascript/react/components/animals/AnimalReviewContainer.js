@@ -24,12 +24,10 @@ const AnimalReviewContainer = props => {
   })
 
   return(
-    <div className="review-container row">
-      <div className="reviews-header columns large-10 small-12">
-        <h3>Reviews</h3>
-      </div>
+    <>
+      <h3>Reviews</h3>
       {reviewTiles}
-    </div>
+    </>
   )
 }
 
