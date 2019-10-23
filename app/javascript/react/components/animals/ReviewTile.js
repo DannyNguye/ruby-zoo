@@ -62,8 +62,8 @@ const ReviewTile = props => {
   }
 
   return(
-    <div className="review-tile cell grid-x large-8 small-12">
-      <div className="cell large-9 small-12">
+    <div className="review-tile row">
+      <div className="columns large-9 small-12">
         <ul>
           <li><h4>Title: {props.title}</h4></li>
           <li><h5>Rating: {ratingStar}</h5></li>
@@ -71,7 +71,7 @@ const ReviewTile = props => {
           {buttons}
         </ul>
       </div>
-      <div className="cell large-3 small-12">
+      <div className="columns large-3 small-12">
         <VotesTile
           handleVoteClick={handleVoteClick}
           votes={votes}

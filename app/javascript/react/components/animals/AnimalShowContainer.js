@@ -146,7 +146,7 @@ const AnimalShowContainer = props => {
           <button onClick={showReviewForm}>Add a Review</button>
         </div>
       </div>
-      <div className="columns small-6">
+      <div className="columns small-6 animal-image text-center">
         <div className={`${cssDisplay}`}>
           <ReviewForm
             reviewFields={reviewFields}
@@ -156,9 +156,11 @@ const AnimalShowContainer = props => {
             name={animal.name}
           />
         </div>
-        <img className={`${cssPictureDisplay}`} src={`${animal.imageurl}`}></img>
+        <div className={`${cssPictureDisplay}`}>
+          <img src={`${animal.imageurl}`}></img>
+        </div>
       </div>
-      <div className="grid-container">
+      <div className="columns large-12">
         <AnimalReviewContainer
           reviews={reviews}
           user={user}
