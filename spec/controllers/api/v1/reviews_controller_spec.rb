@@ -1,18 +1,19 @@
 require "rails_helper"
 
 RSpec.describe Api::V1::ReviewsController, type: :controller do
+  let!(:user1) { User.create(
+    username: "John",
+    email: "john@gmail.com",
+    password: "john123"
+    ) }
   let!(:animal1) { Animal.create(
     name: "Clif",
     species: "Canary",
     sex: "M",
     habitat: "City",
     diet: "Omnivore",
-    description: "Don't feed clif bars"
-  ) }
-  let!(:user1) { User.create(
-    username: "John",
-    email: "john@gmail.com",
-    password: "john123"
+    description: "Don't feed clif bars",
+    user: user1
   ) }
   let!(:review1) { Review.create(
     title: "cute elephant",

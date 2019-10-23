@@ -1,0 +1,13 @@
+<% if current_user %>
+  Welcome, <%= current_user.username %>
+
+  <img width="300" src=<%= current_user.profile_photo %>>
+
+  <% if @animals %>
+    <% @animals.each do |animal| %>
+      <%= link_to animal.name, "/animals/#{animal.id}" %>
+    <% end %>
+  <% end %>
+
+
+<% end %>

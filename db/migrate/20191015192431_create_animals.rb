@@ -8,6 +8,7 @@ class CreateAnimals < ActiveRecord::Migration[5.2]
       t.string :diet
       t.text :description
 
+      t.belongs_to :user, null: false
       t.timestamps
     end
   end

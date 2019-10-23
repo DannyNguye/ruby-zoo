@@ -1,6 +1,11 @@
 require "rails_helper"
 
 RSpec.describe Api::V1::AnimalsController, type: :controller do
+  let!(:user1) { User.create(
+    username: "John",
+    email: "john@gmail.com",
+    password: "john123"
+  ) }
   let!(:animal1) { Animal.create(
     name: "Shannon",
     species: "Chicken",
@@ -8,6 +13,7 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
     habitat: "Desert",
     diet: "Carnivore",
     description: "He's like Wiley, but he can't talk",
+    user: user1,
     imageurl: "http://www.chickenimage.com/chicken.jpg"
   ) }
   let!(:animal2) { Animal.create(
@@ -17,11 +23,7 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
     habitat: "City",
     diet: "anything she can get her beak on",
     description: "peck peck",
-  ) }
-  let!(:user1) { User.create(
-    username: "John",
-    email: "john@gmail.com",
-    password: "john123"
+    user: user1
   ) }
   let!(:review1) { Review.create(
     title: "cute elephant",
@@ -111,7 +113,6 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
       expect(returned_json["animal"]["current_user"]).to eq nil
       expect(returned_json["animal"]["logged_in"]).to eq false
     end
-
   end
 
   describe "POST#create" do
