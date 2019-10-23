@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import _ from 'lodash'
 import AnimalShowPage from './AnimalShowPage'
 import AnimalReviewContainer from './AnimalReviewContainer'
@@ -154,11 +153,11 @@ const AnimalShowContainer = props => {
           />
         </div>
       </div>
-
       <div>
         <AnimalReviewContainer
           reviews={reviews}
           user={user}
+          animalId={animalId}
         />
       </div>
     </div>
