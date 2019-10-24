@@ -132,7 +132,7 @@ const AnimalShowContainer = props => {
 
   return (
     <div className="row">
-      <div className="columns small-6">
+      <div className="columns large-6 small-12">
         <AnimalShowPage
           id={animal.id}
           name={animal.name}
@@ -142,22 +142,25 @@ const AnimalShowContainer = props => {
           diet={animal.diet}
           description={animal.description}
         />
+
+      </div>
+      <div className="columns large-6 small-12 animal-image text-center">
         <div className="review-button">
           <button onClick={showReviewForm}>Add a Review</button>
         </div>
-      </div>
-      <div className="columns small-6 animal-image text-center">
-        <div className={`${cssDisplay}`}>
-          <ReviewForm
-            reviewFields={reviewFields}
-            errors={errors}
-            handleSubmit={handleSubmit}
-            handleInputChange={handleInputChange}
-            name={animal.name}
-          />
-        </div>
-        <div className={`${cssPictureDisplay}`}>
-          <img src={`${animal.imageurl}`}></img>
+        <div className="image-form-tile">
+          <div className={`${cssDisplay}`}>
+            <ReviewForm
+              reviewFields={reviewFields}
+              errors={errors}
+              handleSubmit={handleSubmit}
+              handleInputChange={handleInputChange}
+              name={animal.name}
+            />
+          </div>
+          <div className={`${cssPictureDisplay}`}>
+            <img src={`${animal.imageurl}`}></img>
+          </div>
         </div>
       </div>
       <div className="columns large-12">

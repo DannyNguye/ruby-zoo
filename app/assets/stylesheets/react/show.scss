@@ -6,13 +6,16 @@
   display: contents;
 }
 
+.image-form-tile {
+  margin-top: 2em;
+}
+
 .animal-image {
-  margin-top: 70px;
   min-width: 50%;
 }
 
 .show-div {
-  margin: auto 50px auto 50px;
+  margin: auto;
   padding: 2em;
 }
 
@@ -52,10 +55,6 @@ ul {
 
 .review-container {
   margin: auto;
-}
-
-.review-button {
-  margin-left: 12em;
 }
 
 .review-button button {
@@ -111,4 +110,13 @@ ul {
 
 .downvote {
   color: #F87D7D;
+}
+
+.review-user {
+  font-size: 0.75em;
+  font-weight: bold;
+}
+
+.review-profile-image {
+  max-width: 150px;
 }

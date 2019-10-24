@@ -1,10 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Bree+Serif&display=swap');
-
 @import url('https://fonts.googleapis.com/css?family=Cabin+Sketch&display=swap');
 
 #site-title a {
   color: white;
-  font-family: 'Cabin Sketch', cursive;
+  font-family: 'Cabin Sketch', sans-serif;
   font-size: 2em;
   padding-left: 0.5em;
   transition: 0.2s;
@@ -12,7 +11,6 @@
 
 #site-title a:hover {
   text-shadow: 2px 2px 8px #8400FF;
-
 }
 
 .top-bar ul {
@@ -21,10 +19,10 @@
 
 .menu li.header-link a {
   color: white;
-  font-family: 'Cabin Sketch', cursive;
+  font-family: 'Cabin Sketch', sans-serif;
   padding-left: 1em;
   font-size: 2em;
-  transition: 0.2s;
+  transition: 0.25s;
 }
 
 .menu li.header-link a:hover {
@@ -46,7 +44,7 @@
   height: 3em;
   text-transform: uppercase;
   font-size: 0.8em;
-  transition: 0.3s;
+  transition: 0.25s;
   margin-top: 1em;
   text-align: center;
 }
@@ -74,13 +72,13 @@
 }
 
 .animal-tile h4 {
-  font-family: 'Bree Serif', serif;
+  font-family: 'Bree Serif', sans-serif;
   color: white;
   margin-bottom: 0;
 }
 
 .animal-tile h5 {
-  font-family: 'Bree Serif', serif;
+  font-family: 'Bree Serif', sans-serif;
   color: #FACD91;
 }
 
