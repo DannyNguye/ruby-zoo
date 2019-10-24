@@ -19,7 +19,7 @@ An animal review site that allows users to add their favorite zoo animals and re
 
 * Download the Repo
 * 'yarn install' and 'bundle install' from your terminal
-* create the database: 'bundle exec rake db:create', 'bundle exec rake db:migrate', 'bundle exec rake db:seed'
+* create the database: 'bundle exec rake db:create', 'bundle exec rake db:migrate'
 * You will need an AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY, placed in a .env file
 * 'yarn run start' and 'rails s'
 * Navigate your browser to localhost:3000
