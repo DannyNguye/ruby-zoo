@@ -5,9 +5,13 @@ import WelcomeTile from "./WelcomeTile"
 const AnimalsIndexContainer = props => {
   const [animals, setAnimals] = useState([])
   const [userRole, setUserRole] = useState("")
-
+  
   useEffect(() => {
-    fetch("/api/v1/animals.json")
+    let search = ""
+    if (props.location.search) {
+      search = props.location.search
+    }
+    fetch(`/api/v1/animals${search}.json`)
     .then((response) => {
       if (response.ok) {
         return response

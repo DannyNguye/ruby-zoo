@@ -17,8 +17,23 @@
       <% end %>
       <li class="header-link"><%= link_to 'Add Animal', animals_new_path %></li>
       <li class="header-link"><%= link_to 'About', "/" %></li>
-      <li class="header-link"><%= link_to 'Contribute', "/" %></li>
     </ul>
+
+
+        <%= form_for "/animals", method: "GET" do |f| %>
+          <div class="row">
+            <div class="columns large-6 medium-12 small-12">
+              <%= f.text_field :name %>
+            </div>
+            <div class="columns large-6 medium-12 small-12">
+              <%= f.submit "Search", :class => 'search-button' %>
+            </div>
+          </div>
+        <% end %>
+
+
+
+
 
     <section class="top-bar-section header">
       <ul class="right enter-buttons">
