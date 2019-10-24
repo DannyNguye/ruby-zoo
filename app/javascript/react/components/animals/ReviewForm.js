@@ -5,7 +5,7 @@ import ErrorList from "../ErrorList"
 
 const ReviewForm = props => {
   return(
-    <div className="grid-container form-container">
+    <div className="grid-container form-container-show-page">
       <h2>New Review for {props.name}</h2>
       <form onSubmit={props.handleSubmit} id="review-form">
         <ErrorList
