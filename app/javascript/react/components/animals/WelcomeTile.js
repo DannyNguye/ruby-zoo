@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom'
 
 const WelcomeTile = props => {
   return(
-    <div>
-      <h1>Welcome to the Zoo</h1>
-      <p>
+    <div className="text-center">
+      <div className="row">
+        <h1 className="welcome-header column large-8 large-offset-2">Welcome to the Zoo</h1>
+      </div>
+      <p className="welcome-text">
         We hope you enjoyed your time in the zoo.
         While you wait for your parents to bring you
         back for another visit, you can still enjoy the animals from afar!
