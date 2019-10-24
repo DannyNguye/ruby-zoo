@@ -2,7 +2,7 @@ class Api::V1::AnimalsController < ApiController
   before_action :authenticate_user!, except: [:show, :index]
 
   def index
-    animals = Animal.all
+    animals = Animal.all.order(:name)
     user_role = "guest"
     if user_signed_in?
       user_role = current_user.role
