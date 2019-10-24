@@ -2,7 +2,15 @@ class Api::V1::AnimalsController < ApiController
   before_action :authenticate_user!, except: [:show, :index]
 
   def index
-    animals = Animal.all.order(:name)
+    if params["/animals"]
+      if params["/animals"][:name] == ""
+        animals = Animal.all.order(:name)
+      else
+        animals = Animal.where(name: params["/animals"][:name]).or(Animal.where(species: params["/animals"][:name]))
+      end
+    else
+      animals = Animal.all.order(:name)
+    end
     user_role = "guest"
     if user_signed_in?
       user_role = current_user.role
