@@ -1,13 +1,33 @@
 <% if current_user %>
-  Welcome, <%= current_user.username %>
-
-  <img width="300" src=<%= current_user.profile_photo %>>
-
-  <% if @animals %>
-    <% @animals.each do |animal| %>
-      <%= link_to animal.name, "/animals/#{animal.id}" %>
+<div class="profile-div">
+  <div class="row">
+    <div class="profile-card columns text-center large-4 medium-12 small-12">
+      <img class="profile-pic thumbnail" src=<%= current_user.profile_photo %>>
+      </br>
+      <p class="username">
+        <%= current_user.username %>
+      </p>
+      <p class="stats">
+        Number of Animals: <%= current_user.animals.length %>
+        <br>
+        Number of Reviews: <%= current_user.reviews.length %>
+      </p>
+    </div>
+    <div class="columns large-8 medium-12 small-12">
+      <h3>Your Animals:</h3>
+        <% if @animals %>
+        <ul class="animal-list">
+          <% @animals.each do |animal| %>
+          <li>
+            <%= link_to "#{animal.name} the #{animal.species}", "/animals/#{animal.id}" %>
+            <li class="animal-date">
+              Added on <%= animal.created_at.strftime('%A, %B %d') %>
+            </li>
+          </li>
+          <% end %>
+        </ul>
+        <% end %>
     <% end %>
-  <% end %>
-
-
-<% end %>
+    </div>
+  </div>
+</div>

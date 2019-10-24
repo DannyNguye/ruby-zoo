@@ -37,7 +37,7 @@ const ReviewForm = props => {
         </label>
 
         <label htmlFor="body">Review:
-          <input
+          <textarea
             type="text"
             id="body"
             value={props.reviewFields.body}

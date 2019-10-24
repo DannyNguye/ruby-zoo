@@ -9,13 +9,13 @@ feature 'profile page' do
     fill_in 'Password', with: user.password
     click_button 'Log In'
 
-    expect(page).to have_content("Profile")
+    expect(page).to have_content("My Profile")
   end
 
   scenario 'user does not sign in' do
     visit root_path
 
-    expect(page).not_to have_content("Profile")
+    expect(page).not_to have_content("My Profile")
   end
 
   scenario 'user visits profile page' do
@@ -25,7 +25,7 @@ feature 'profile page' do
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Log In'
-    click_link 'Profile'
+    click_link 'My Profile'
     visit profiles_show_url
 
     expect(page).to have_content(user.username)
@@ -47,7 +47,7 @@ feature 'profile page' do
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Log In'
-    click_link 'Profile'
+    click_link 'My Profile'
     visit profiles_show_url
 
     expect(page).to have_content(animal.name)
@@ -70,7 +70,7 @@ feature 'profile page' do
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Log In'
-    click_link 'Profile'
+    click_link 'My Profile'
     visit profiles_show_url
 
     expect(page).not_to have_content(animal.name)

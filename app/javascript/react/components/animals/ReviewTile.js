@@ -62,17 +62,21 @@ const ReviewTile = props => {
   }
 
   return(
-    <div className="review-tile columns large-10 small-12">
-      <ul>
-        <li><h4>Title: {props.title}</h4></li>
-        <li><h5>Rating: {ratingStar}</h5></li>
-        <li><p>"{props.body}"</p></li>
-      </ul>
-      <VotesTile
-        handleVoteClick={handleVoteClick}
-        votes={votes}
-      />
-      {buttons}
+    <div className="review-tile row">
+      <div className="columns large-9 small-12">
+        <ul>
+          <li><h4>Title: {props.title}</h4></li>
+          <li><h5>Rating: {ratingStar}</h5></li>
+          <li><p>"{props.body}"</p></li>
+          {buttons}
+        </ul>
+      </div>
+      <div className="columns large-3 small-12">
+        <VotesTile
+          handleVoteClick={handleVoteClick}
+          votes={votes}
+        />
+      </div>
     </div>
   )
 }
