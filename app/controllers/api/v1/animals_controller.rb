@@ -6,7 +6,7 @@ class Api::V1::AnimalsController < ApiController
       if params["/animals"][:name] == ""
         animals = Animal.all.order(:name)
       else
-        animals = Animal.where(name: params["/animals"][:name]).or(Animal.where(species: params["/animals"][:name]))
+        animals = Animal.where(name: params["/animals"][:name]).or(Animal.where(species: params["/animals"][:name])).or(Animal.where(habitat: params["/animals"][:name])).or(Animal.where(sex: params["/animals"][:name]))
       end
     else
       animals = Animal.all.order(:name)
