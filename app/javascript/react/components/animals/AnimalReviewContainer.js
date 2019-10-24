@@ -19,6 +19,9 @@ const AnimalReviewContainer = props => {
         body={review.body}
         showButton={showButton}
         animalId={props.animalId}
+        userReviewProfileImg={review.user.profile_photo.url}
+        userName={review.user.username}
+        createdAt={review.review_date}
       />
     )
   })
