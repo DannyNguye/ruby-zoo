@@ -43,8 +43,8 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
 
-      expect(returned_json.length).to eq 2
-      
+      expect(returned_json.length).to eq 3
+
       expect(returned_json["animals"][0]["name"]).to eq "Jance"
       expect(returned_json["animals"][0]["species"]).to eq "Bird"
       expect(returned_json["animals"][0]["imageurl"]).to eq "https://papermilkdesign.com/images/zoo-clipart-background-5.jpg"

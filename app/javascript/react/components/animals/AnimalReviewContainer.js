@@ -2,6 +2,12 @@ import React from 'react'
 import ReviewTile from './ReviewTile'
 
 const AnimalReviewContainer = props => {
+  let reviewHeader = "Reviews"
+  
+  if (props.reviews.length === 0) {
+    reviewHeader = "No Reviews Yet"
+  }
+
   const reviewTiles = props.reviews.map(review => {
     let showButton = false
     if (props.user) {
@@ -28,7 +34,7 @@ const AnimalReviewContainer = props => {
 
   return(
     <>
-      <h3>Reviews</h3>
+      <h3>{reviewHeader}</h3>
       {reviewTiles}
     </>
   )

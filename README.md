@@ -7,15 +7,17 @@ https://ruby-zoo.herokuapp.com/
 
 ## Technologies
 
-Ruby - 2.6.5
-Rails - 5.2.3
-React - 16.8.0
-CarrierWave - 2.0.2
-Foundation-Rails - 6.5.3.0
+* Ruby - 2.6.5
+* Rails - 5.2.3
+* React - 16.8.0
+* CarrierWave - 2.0.2
+* Foundation-Rails - 6.5.3.0
+
+## Description
 
 An animal review site that allows users to add their favorite zoo animals and review/vote on those animals.
 
-##To Run Locally
+## To Run Locally
 
 * Download the Repo
 * 'yarn install' and 'bundle install' from your terminal
@@ -26,4 +28,5 @@ An animal review site that allows users to add their favorite zoo animals and re
 * Run test suite with `yarn test` and `rspec`
 
 ## Authors
+
 Danny Nguyen, Priti Patil, Shani Fox, and Casey Whittaker

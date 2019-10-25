@@ -5,7 +5,8 @@ import WelcomeTile from "./WelcomeTile"
 const AnimalsIndexContainer = props => {
   const [animals, setAnimals] = useState([])
   const [userRole, setUserRole] = useState("")
-  
+  const [noResult, setNoResult] = useState("")
+
   useEffect(() => {
     let search = ""
     if (props.location.search) {
@@ -25,6 +26,7 @@ const AnimalsIndexContainer = props => {
     .then(body => {
       setAnimals(body.animals)
       setUserRole(body.user_role)
+      setNoResult(body.no_result)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
@@ -50,6 +52,9 @@ const AnimalsIndexContainer = props => {
       <div className="row">
         <WelcomeTile />
       </div>
+      <p className="no-results text-center">
+        {noResult}
+      </p>
       <div className="row">
         {animalTiles}
       </div>

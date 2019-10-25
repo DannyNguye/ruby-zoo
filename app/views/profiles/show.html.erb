@@ -14,8 +14,8 @@
       </p>
     </div>
     <div class="columns large-8 medium-12 small-12">
-      <h3>Your Animals:</h3>
-        <% if @animals %>
+      <% if @animals.length > 0 %>
+        <h3>Your Animals:</h3>
         <ul class="animal-list">
           <% @animals.each do |animal| %>
           <li>
@@ -24,9 +24,11 @@
               Added on <%= animal.created_at.strftime('%A, %B %d') %>
             </li>
           </li>
-          <% end %>
-        </ul>
         <% end %>
+        </ul>
+      <% else %>
+        <h3>No Animals Yet</h3>
+      <% end %>
     <% end %>
     </div>
   </div>
