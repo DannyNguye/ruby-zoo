@@ -4,9 +4,11 @@ import AdminButtonTile from './AdminButtonTile'
 
 const AnimalIndexTile = props => {
   let buttons
+
   if(props.showButton){
     buttons = <AdminButtonTile />
   }
+
   return(
     <div className="columns large-3 small-12 animal-tile">
       <h4>{props.name}</h4>

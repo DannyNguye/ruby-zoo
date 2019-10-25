@@ -130,6 +130,12 @@ const AnimalShowContainer = props => {
     }
   }
 
+  let buttonText = "Add a Review"
+
+  if (cssDisplay === "display-review-form") {
+    buttonText = "Show Animal"
+  }
+
   return (
     <div className="row">
       <div className="columns large-6 small-12">
@@ -146,7 +152,7 @@ const AnimalShowContainer = props => {
       </div>
       <div className="columns large-6 small-12 animal-image text-center">
         <div className="review-button">
-          <button onClick={showReviewForm}>Add a Review</button>
+          <button onClick={showReviewForm}>{buttonText}</button>
         </div>
         <div className="image-form-tile">
           <div className={`${cssDisplay}`}>
